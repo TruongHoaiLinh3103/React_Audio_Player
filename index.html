@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multer-storage-cloudinary</title>
+    <link href="./css/main.css" rel="stylesheet" />
+</head>
+<body>
+    <h1 id="multer-storage-cloudinary">Multer Storage Cloudinary</h1>
+    <p>A multer storage engine for Cloudinary. Also consult the <a href="https://github.com/cloudinary/cloudinary_npm">Cloudinary API</a>. <a href="https://truonghoailinh3103.github.io/Cloudinary/#quick_example_multer" >For example</a></p>
+    <h2 id="installation">Installation</h2>
+    <pre class="box-x"><code class="language-sh">npm install multer-storage-cloudinary
+    </code></pre>
+    <h2 id="usage">Usage</h2>
+    <pre class="box-x"><code class="language-javascript">const cloudinary = require(&#39;cloudinary&#39;).v2;
+    const { CloudinaryStorage } = require(&#39;multer-storage-cloudinary&#39;);
+    const express = require(&#39;express&#39;);
+    const multer = require(&#39;multer&#39;);
+
+    const app = express();
+
+    const storage = new CloudinaryStorage({
+    cloudinary: cloudinary,
+    params: {
+        folder: &#39;some-folder-name&#39;,
+        format: async (req, file) =&gt; &#39;png&#39;, // supports promises as well
+        public_id: (req, file) =&gt; &#39;computed-filename-using-request&#39;,
+    },
+    });
+
+    const parser = multer({ storage: storage });
+
+    app.post(&#39;/upload&#39;, parser.single(&#39;image&#39;), function (req, res) {
+    res.json(req.file);
+    });
+    </code></pre>
+    <h3 id="file-properties">File properties</h3>
+    <p>File objects will expose the following properties mapped from the <a href="https://github.com/cloudinary/cloudinary_npm#upload">Cloudinary API</a>:</p>
+    <div class="box-x">
+        <table>
+            <thead>
+                <tr>
+                    <th>Key</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>filename</code></td>
+                    <td>public_id of the file on cloudinary</td>
+                </tr>
+                <tr>
+                    <td><code>path</code></td>
+                    <td>A URL for fetching the file</td>
+                </tr>
+                <tr>
+                    <td><code>size</code></td>
+                    <td>Size of the file in bytes</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <h3 id="options">Options</h3>
+    <p>Storage can be configured using the <code>options</code> argument passed to the <code>CloudinaryStorage</code> constructor.</p>
+    <pre class="box-x"><code class="language-javascript">const { CloudinaryStorage } = require(&#39;multer-storage-cloudinary&#39;);
+
+    const storage = new CloudinaryStorage({
+    cloudinary: cloudinary,
+    params: {
+        // upload paramters
+    },
+    });
+    </code></pre>
+    <p>All parameters are optional except the configured Cloudinary API object:</p>
+    <div class="box-x">
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>options.cloudinary</code></td>
+                    <td>A Cloudinary API object <br>The API must be configured by the user</td>
+                    <td><code>object</code> <br><strong>required</strong></td>
+                </tr>
+                <tr>
+                    <td><code>options.params</code></td>
+                    <td>An object or a function that resolves to an object which can contain any/all properties described in the <a href="https://cloudinary.com/documentation/image_upload_api_reference#upload_method">Cloudinary upload API docs</a>. Read below for more information</td>
+                    <td><code>object</code> or <code>function</code></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <p>Each property in the params object (either directly or resolved from the function)
+    can either be a static value or an async function that resolves to the required value.
+    All upload parameters specified in the <a href="https://cloudinary.com/documentation/image_upload_api_reference#upload_method">Cloudinary docs</a> are supported.
+    </p>
+    <p><em>Note: <code>public_id</code> is different in that it must always be a functional parameter</em></p>
+    <p>Functional parameters are called on every request and can be used in the following way:</p>
+    <pre class="box-x"><code class="language-javascript">const cloudinary = require(&#39;cloudinary&#39;).v2;
+    const { CloudinaryStorage } = require(&#39;multer-storage-cloudinary&#39;);
+
+    const storage = new CloudinaryStorage({
+    cloudinary: cloudinary,
+    params: {
+        folder: (req, file) =&gt; &#39;folder_name&#39;,
+        format: async (req, file) =&gt; {
+        // async code using `req` and `file`
+        // ...
+        return &#39;jpeg&#39;;
+        },
+        public_id: (req, file) =&gt; &#39;some_unique_id&#39;,
+    },
+    });
+    </code></pre>
+    <p>You can also provide all params using a single function</p>
+    <pre class="box-x"><code class="language-javascript">const cloudinary = require(&#39;cloudinary&#39;).v2;
+    const { CloudinaryStorage } = require(&#39;multer-storage-cloudinary&#39;);
+
+    const storage = new CloudinaryStorage({
+    cloudinary: cloudinary,
+    params: async (req, file) =&gt; {
+        // async code using `req` and `file`
+        // ...
+        return {
+        folder: &#39;folder_name&#39;,
+        format: &#39;jpeg&#39;,
+        public_id: &#39;some_unique_id&#39;,
+        };
+    },
+    });
+    </code></pre>
+    <h3 id="typescript">Typescript</h3>
+    <p>This library is written is typescript and so provides all types necessary for use
+    in a typescript project.
+    </p>
+    <h2 id="testing">Testing</h2>
+    <p>The Cloudinary API must be configured using the <code>CLOUDINARY_URL</code> environment variable in order to run the tests.
+    All test files are stored in a seperate Cloudinary folder, which is deleted after tests finish.
+    </p>
+    <pre class="box-x"><code class="language-sh">npm test
+    </code></pre>
+</body>
+</html>
