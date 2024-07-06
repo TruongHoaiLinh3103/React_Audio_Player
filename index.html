@@ -21,18 +21,18 @@ const multer = require(&#39;multer&#39;);
 const app = express();
 
 const storage = new CloudinaryStorage({
-cloudinary: cloudinary,
-params: {
-    folder: &#39;some-folder-name&#39;,
-    format: async (req, file) =&gt; &#39;png&#39;, // supports promises as well
-    public_id: (req, file) =&gt; &#39;computed-filename-using-request&#39;,
-},
+    cloudinary: cloudinary,
+    params: {
+        folder: &#39;some-folder-name&#39;,
+        format: async (req, file) =&gt; &#39;png&#39;, // supports promises as well
+        public_id: (req, file) =&gt; &#39;computed-filename-using-request&#39;,
+    },
 });
 
 const parser = multer({ storage: storage });
 
 app.post(&#39;/upload&#39;, parser.single(&#39;image&#39;), function (req, res) {
-res.json(req.file);
+    res.json(req.file);
 });
     </code></pre>
     <h3 id="file-properties">File properties</h3>
@@ -66,10 +66,10 @@ res.json(req.file);
     <pre class="box-x"><code class="language-javascript">const { CloudinaryStorage } = require(&#39;multer-storage-cloudinary&#39;);
 
 const storage = new CloudinaryStorage({
-cloudinary: cloudinary,
-params: {
-    // upload paramters
-},
+    cloudinary: cloudinary,
+    params: {
+        // upload paramters
+    },
 });
     </code></pre>
     <p>All parameters are optional except the configured Cloudinary API object:</p>
@@ -106,16 +106,16 @@ params: {
 const { CloudinaryStorage } = require(&#39;multer-storage-cloudinary&#39;);
 
 const storage = new CloudinaryStorage({
-cloudinary: cloudinary,
-params: {
-    folder: (req, file) =&gt; &#39;folder_name&#39;,
-    format: async (req, file) =&gt; {
-    // async code using `req` and `file`
-    // ...
-    return &#39;jpeg&#39;;
+    cloudinary: cloudinary,
+    params: {
+        folder: (req, file) =&gt; &#39;folder_name&#39;,
+        format: async (req, file) =&gt; {
+        // async code using `req` and `file`
+        // ...
+        return &#39;jpeg&#39;;
+        },
+        public_id: (req, file) =&gt; &#39;some_unique_id&#39;,
     },
-    public_id: (req, file) =&gt; &#39;some_unique_id&#39;,
-},
 });
     </code></pre>
     <p>You can also provide all params using a single function</p>
@@ -123,16 +123,16 @@ params: {
 const { CloudinaryStorage } = require(&#39;multer-storage-cloudinary&#39;);
 
 const storage = new CloudinaryStorage({
-cloudinary: cloudinary,
-params: async (req, file) =&gt; {
-    // async code using `req` and `file`
-    // ...
-    return {
-    folder: &#39;folder_name&#39;,
-    format: &#39;jpeg&#39;,
-    public_id: &#39;some_unique_id&#39;,
-    };
-},
+    cloudinary: cloudinary,
+    params: async (req, file) =&gt; {
+        // async code using `req` and `file`
+        // ...
+        return {
+        folder: &#39;folder_name&#39;,
+        format: &#39;jpeg&#39;,
+        public_id: &#39;some_unique_id&#39;,
+        };
+    },
 });
     </code></pre>
     <h3 id="typescript">Typescript</h3>
