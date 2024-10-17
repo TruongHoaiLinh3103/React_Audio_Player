@@ -10,11 +10,11 @@
     <h1 id="react-audio-player">React Audio Player</h1>
     <p>This is a light React wrapper around the HTML5 audio tag.  It provides the ability to manipulate the player and listen to events through a nice React interface.</p>
     <h2 id="installation">Installation</h2>
-    <pre><code>npm install --save react-audio-player
+    <pre class="box-x"><code>npm install --save react-audio-player
     </code></pre>
     <p>Also be sure you have <code>react</code> and <code>react-dom</code> installed in your app at version 15 or above.</p>
     <h2 id="usage">Usage</h2>
-    <pre><code>import ReactAudioPlayer from &#39;react-audio-player&#39;;
+    <pre class="box-x"><code>import ReactAudioPlayer from &#39;react-audio-player&#39;;
     //...
     &lt;ReactAudioPlayer
       src=&quot;my_audio_file.ogg&quot;
@@ -27,177 +27,182 @@
     <h2 id="props">Props</h2>
     <h3 id="props---nativereact-attributes">Props - Native/React Attributes</h3>
     <p>See the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio">audio tag documentation</a> for detailed explanations of these attributes.</p>
-    <table>
-       <thead>
-          <tr>
-             <th>Prop</th>
-             <th>Type</th>
-             <th>Default</th>
-             <th>Notes</th>
-          </tr>
-       </thead>
-       <tbody>
-          <tr>
-             <td><code>autoPlay</code></td>
-             <td>Boolean</td>
-             <td>false</td>
-             <td>---</td>
-          </tr>
-          <tr>
-             <td><code>children</code></td>
-             <td>Element</td>
-             <td>null</td>
-             <td>---</td>
-          </tr>
-          <tr>
-             <td><code>className</code></td>
-             <td>String</td>
-             <td><em>empty string</em></td>
-             <td>---</td>
-          </tr>
-          <tr>
-             <td><code>controls</code></td>
-             <td>Boolean</td>
-             <td>false</td>
-             <td>---</td>
-          </tr>
-          <tr>
-             <td><code>crossOrigin</code></td>
-             <td>String</td>
-             <td><em>empty string</em></td>
-             <td>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes">MDN&#39;s article on CORS</a> for more about this attribute.</td>
-          </tr>
-          <tr>
-             <td><code>controlsList</code></td>
-             <td>String</td>
-             <td><em>empty string</em></td>
-             <td>For Chrome 58+. Only available in React 15.6.2+</td>
-          </tr>
-          <tr>
-             <td><code>id</code></td>
-             <td>String</td>
-             <td><em>empty string</em></td>
-             <td>---</td>
-          </tr>
-          <tr>
-             <td><code>loop</code></td>
-             <td>Boolean</td>
-             <td>false</td>
-             <td>---</td>
-          </tr>
-          <tr>
-             <td><code>muted</code></td>
-             <td>Boolean</td>
-             <td>false</td>
-             <td>---</td>
-          </tr>
-          <tr>
-             <td><code>volume</code></td>
-             <td>Number</td>
-             <td>1.0</td>
-             <td>---</td>
-          </tr>
-          <tr>
-             <td><code>preload</code></td>
-             <td>String</td>
-             <td>&#39;metadata&#39;</td>
-             <td>---</td>
-          </tr>
-          <tr>
-             <td><code>src</code></td>
-             <td>String</td>
-             <td><em>empty string</em></td>
-             <td>---</td>
-          </tr>
-          <tr>
-             <td><code>style</code></td>
-             <td>Object</td>
-             <td>---</td>
-             <td>---</td>
-          </tr>
-       </tbody>
-    </table>
+    <div class="box-x">
+        <table>
+            <thead>
+               <tr>
+                  <th>Prop</th>
+                  <th>Type</th>
+                  <th>Default</th>
+                  <th>Notes</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td><code>autoPlay</code></td>
+                  <td>Boolean</td>
+                  <td>false</td>
+                  <td>---</td>
+               </tr>
+               <tr>
+                  <td><code>children</code></td>
+                  <td>Element</td>
+                  <td>null</td>
+                  <td>---</td>
+               </tr>
+               <tr>
+                  <td><code>className</code></td>
+                  <td>String</td>
+                  <td><em>empty string</em></td>
+                  <td>---</td>
+               </tr>
+               <tr>
+                  <td><code>controls</code></td>
+                  <td>Boolean</td>
+                  <td>false</td>
+                  <td>---</td>
+               </tr>
+               <tr>
+                  <td><code>crossOrigin</code></td>
+                  <td>String</td>
+                  <td><em>empty string</em></td>
+                  <td>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes">MDN&#39;s article on CORS</a> for more about this attribute.</td>
+               </tr>
+               <tr>
+                  <td><code>controlsList</code></td>
+                  <td>String</td>
+                  <td><em>empty string</em></td>
+                  <td>For Chrome 58+. Only available in React 15.6.2+</td>
+               </tr>
+               <tr>
+                  <td><code>id</code></td>
+                  <td>String</td>
+                  <td><em>empty string</em></td>
+                  <td>---</td>
+               </tr>
+               <tr>
+                  <td><code>loop</code></td>
+                  <td>Boolean</td>
+                  <td>false</td>
+                  <td>---</td>
+               </tr>
+               <tr>
+                  <td><code>muted</code></td>
+                  <td>Boolean</td>
+                  <td>false</td>
+                  <td>---</td>
+               </tr>
+               <tr>
+                  <td><code>volume</code></td>
+                  <td>Number</td>
+                  <td>1.0</td>
+                  <td>---</td>
+               </tr>
+               <tr>
+                  <td><code>preload</code></td>
+                  <td>String</td>
+                  <td>&#39;metadata&#39;</td>
+                  <td>---</td>
+               </tr>
+               <tr>
+                  <td><code>src</code></td>
+                  <td>String</td>
+                  <td><em>empty string</em></td>
+                  <td>---</td>
+               </tr>
+               <tr>
+                  <td><code>style</code></td>
+                  <td>Object</td>
+                  <td>---</td>
+                  <td>---</td>
+               </tr>
+            </tbody>
+        </table>
+    </div>
+    
     <h3 id="props---events">Props - Events</h3>
-    <table>
-       <thead>
-          <tr>
-             <th>Prop</th>
-             <th>Type</th>
-             <th>Description</th>
-          </tr>
-       </thead>
-       <tbody>
-          <tr>
-             <td><code>listenInterval</code></td>
-             <td>Number</td>
-             <td>Indicates how often to call the <code>onListened</code> prop during playback, in milliseconds. Default is 10000.</td>
-          </tr>
-          <tr>
-             <td><code>onAbort</code></td>
-             <td>Function</td>
-             <td>called when unloading the audio player, like when switching to a different src file. Passed the event.</td>
-          </tr>
-          <tr>
-             <td><code>onCanPlay</code></td>
-             <td>Function</td>
-             <td>called when enough of the file has been downloaded to be able to start playing.  Passed the event.</td>
-          </tr>
-          <tr>
-             <td><code>onCanPlayThrough</code></td>
-             <td>Function</td>
-             <td>called when enough of the file has been downloaded to play through the entire file.  Passed the event.</td>
-          </tr>
-          <tr>
-             <td><code>onEnded</code></td>
-             <td>Function</td>
-             <td>called when playback has finished to the end of the file. Passed the event.</td>
-          </tr>
-          <tr>
-             <td><code>onError</code></td>
-             <td>Function</td>
-             <td>called when the audio tag encounters an error. Passed the event.</td>
-          </tr>
-          <tr>
-             <td><code>onListen</code></td>
-             <td>Function</td>
-             <td>called every <code>listenInterval</code> milliseconds during playback.  Passed the event.</td>
-          </tr>
-          <tr>
-             <td><code>onPause</code></td>
-             <td>Function</td>
-             <td>called when the user pauses playback. Passed the event.</td>
-          </tr>
-          <tr>
-             <td><code>onPlay</code></td>
-             <td>Function</td>
-             <td>called when the user taps play.  Passed the event.</td>
-          </tr>
-          <tr>
-             <td><code>onSeeked</code></td>
-             <td>Function</td>
-             <td>called when the user drags the time indicator to a new time. Passed the event.</td>
-          </tr>
-          <tr>
-             <td><code>onVolumeChanged</code></td>
-             <td>Function</td>
-             <td>called when the user changes the volume, such as by dragging the volume slider</td>
-          </tr>
-          <tr>
-             <td><code>onLoadedMetadata</code></td>
-             <td>Function</td>
-             <td>called when the metadata for the given audio file has finished downloading.  Passed the event.</td>
-          </tr>
-       </tbody>
-    </table>
+    <div class="box-x">
+        <table>
+            <thead>
+               <tr>
+                  <th>Prop</th>
+                  <th>Type</th>
+                  <th>Description</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td><code>listenInterval</code></td>
+                  <td>Number</td>
+                  <td>Indicates how often to call the <code>onListened</code> prop during playback, in milliseconds. Default is 10000.</td>
+               </tr>
+               <tr>
+                  <td><code>onAbort</code></td>
+                  <td>Function</td>
+                  <td>called when unloading the audio player, like when switching to a different src file. Passed the event.</td>
+               </tr>
+               <tr>
+                  <td><code>onCanPlay</code></td>
+                  <td>Function</td>
+                  <td>called when enough of the file has been downloaded to be able to start playing.  Passed the event.</td>
+               </tr>
+               <tr>
+                  <td><code>onCanPlayThrough</code></td>
+                  <td>Function</td>
+                  <td>called when enough of the file has been downloaded to play through the entire file.  Passed the event.</td>
+               </tr>
+               <tr>
+                  <td><code>onEnded</code></td>
+                  <td>Function</td>
+                  <td>called when playback has finished to the end of the file. Passed the event.</td>
+               </tr>
+               <tr>
+                  <td><code>onError</code></td>
+                  <td>Function</td>
+                  <td>called when the audio tag encounters an error. Passed the event.</td>
+               </tr>
+               <tr>
+                  <td><code>onListen</code></td>
+                  <td>Function</td>
+                  <td>called every <code>listenInterval</code> milliseconds during playback.  Passed the event.</td>
+               </tr>
+               <tr>
+                  <td><code>onPause</code></td>
+                  <td>Function</td>
+                  <td>called when the user pauses playback. Passed the event.</td>
+               </tr>
+               <tr>
+                  <td><code>onPlay</code></td>
+                  <td>Function</td>
+                  <td>called when the user taps play.  Passed the event.</td>
+               </tr>
+               <tr>
+                  <td><code>onSeeked</code></td>
+                  <td>Function</td>
+                  <td>called when the user drags the time indicator to a new time. Passed the event.</td>
+               </tr>
+               <tr>
+                  <td><code>onVolumeChanged</code></td>
+                  <td>Function</td>
+                  <td>called when the user changes the volume, such as by dragging the volume slider</td>
+               </tr>
+               <tr>
+                  <td><code>onLoadedMetadata</code></td>
+                  <td>Function</td>
+                  <td>called when the metadata for the given audio file has finished downloading.  Passed the event.</td>
+               </tr>
+            </tbody>
+        </table>
+    </div>
     <h2 id="advanced-usage">Advanced Usage</h2>
     <h3 id="access-to-the-audio-element">Access to the audio element</h3>
     <p>You can get direct access to the underlying audio element.  First get a ref to ReactAudioPlayer:</p>
-    <pre><code>&lt;ReactAudioPlayer
+    <pre class="box-x"><code>&lt;ReactAudioPlayer
       ref={(element) =&gt; { this.rap = element; }}
     /&gt;
     </code></pre>
     <p>Then you can access the audio element like this:</p>
-    <pre><code>this.rap.audioEl
+    <pre class="box-x"><code>this.rap.audioEl
     </code></pre>
     <p>This is especially useful if you need access to read-only attributes of the audio tag such as <code>buffered</code> and <code>played</code>.  See the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio">audio tag documentation</a> for more on these attributes.</p>
 </body>
