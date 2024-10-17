@@ -3,147 +3,202 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Multer-storage-cloudinary</title>
+    <title>React Audio Player</title>
     <link href="./css/main.css" rel="stylesheet" />
 </head>
 <body>
-    <h1 id="multer-storage-cloudinary">Multer Storage Cloudinary</h1>
-    <p>A multer storage engine for Cloudinary. Also consult the <a href="https://github.com/cloudinary/cloudinary_npm">Cloudinary API</a>. <a href="https://truonghoailinh3103.github.io/Cloudinary/#quick_example_multer" >For example</a></p>
+    <h1 id="react-audio-player">React Audio Player</h1>
+    <p>This is a light React wrapper around the HTML5 audio tag.  It provides the ability to manipulate the player and listen to events through a nice React interface.</p>
     <h2 id="installation">Installation</h2>
-    <pre class="box-x"><code class="language-sh">npm install multer-storage-cloudinary
+    <pre><code>npm install --save react-audio-player
     </code></pre>
+    <p>Also be sure you have <code>react</code> and <code>react-dom</code> installed in your app at version 15 or above.</p>
     <h2 id="usage">Usage</h2>
-    <pre class="box-x"><code class="language-javascript">const cloudinary = require(&#39;cloudinary&#39;).v2;
-const { CloudinaryStorage } = require(&#39;multer-storage-cloudinary&#39;);
-const express = require(&#39;express&#39;);
-const multer = require(&#39;multer&#39;);
-
-const app = express();
-
-const storage = new CloudinaryStorage({
-    cloudinary: cloudinary,
-    params: {
-        folder: &#39;some-folder-name&#39;,
-        format: async (req, file) =&gt; &#39;png&#39;, // supports promises as well
-        public_id: (req, file) =&gt; &#39;computed-filename-using-request&#39;,
-    },
-});
-
-const parser = multer({ storage: storage });
-
-app.post(&#39;/upload&#39;, parser.single(&#39;image&#39;), function (req, res) {
-    res.json(req.file);
-});
+    <pre><code>import ReactAudioPlayer from &#39;react-audio-player&#39;;
+    //...
+    &lt;ReactAudioPlayer
+      src=&quot;my_audio_file.ogg&quot;
+      autoPlay
+      controls
+    /&gt;
     </code></pre>
-    <h3 id="file-properties">File properties</h3>
-    <p>File objects will expose the following properties mapped from the <a href="https://github.com/cloudinary/cloudinary_npm#upload">Cloudinary API</a>:</p>
-    <div class="box-x">
-        <table>
-            <thead>
-                <tr>
-                    <th>Key</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><code>filename</code></td>
-                    <td>public_id of the file on cloudinary</td>
-                </tr>
-                <tr>
-                    <td><code>path</code></td>
-                    <td>A URL for fetching the file</td>
-                </tr>
-                <tr>
-                    <td><code>size</code></td>
-                    <td>Size of the file in bytes</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <h3 id="options">Options</h3>
-    <p>Storage can be configured using the <code>options</code> argument passed to the <code>CloudinaryStorage</code> constructor.</p>
-    <pre class="box-x"><code class="language-javascript">const { CloudinaryStorage } = require(&#39;multer-storage-cloudinary&#39;);
-
-const storage = new CloudinaryStorage({
-    cloudinary: cloudinary,
-    params: {
-        // upload paramters
-    },
-});
+    <h3 id="example">Example</h3>
+    <p>See the example directory for a basic working example of using this project.  To run it locally, run <code>npm install</code> in the example directory and then <code>npm start</code>.</p>
+    <h2 id="props">Props</h2>
+    <h3 id="props---nativereact-attributes">Props - Native/React Attributes</h3>
+    <p>See the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio">audio tag documentation</a> for detailed explanations of these attributes.</p>
+    <table>
+       <thead>
+          <tr>
+             <th>Prop</th>
+             <th>Type</th>
+             <th>Default</th>
+             <th>Notes</th>
+          </tr>
+       </thead>
+       <tbody>
+          <tr>
+             <td><code>autoPlay</code></td>
+             <td>Boolean</td>
+             <td>false</td>
+             <td>---</td>
+          </tr>
+          <tr>
+             <td><code>children</code></td>
+             <td>Element</td>
+             <td>null</td>
+             <td>---</td>
+          </tr>
+          <tr>
+             <td><code>className</code></td>
+             <td>String</td>
+             <td><em>empty string</em></td>
+             <td>---</td>
+          </tr>
+          <tr>
+             <td><code>controls</code></td>
+             <td>Boolean</td>
+             <td>false</td>
+             <td>---</td>
+          </tr>
+          <tr>
+             <td><code>crossOrigin</code></td>
+             <td>String</td>
+             <td><em>empty string</em></td>
+             <td>See <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes">MDN&#39;s article on CORS</a> for more about this attribute.</td>
+          </tr>
+          <tr>
+             <td><code>controlsList</code></td>
+             <td>String</td>
+             <td><em>empty string</em></td>
+             <td>For Chrome 58+. Only available in React 15.6.2+</td>
+          </tr>
+          <tr>
+             <td><code>id</code></td>
+             <td>String</td>
+             <td><em>empty string</em></td>
+             <td>---</td>
+          </tr>
+          <tr>
+             <td><code>loop</code></td>
+             <td>Boolean</td>
+             <td>false</td>
+             <td>---</td>
+          </tr>
+          <tr>
+             <td><code>muted</code></td>
+             <td>Boolean</td>
+             <td>false</td>
+             <td>---</td>
+          </tr>
+          <tr>
+             <td><code>volume</code></td>
+             <td>Number</td>
+             <td>1.0</td>
+             <td>---</td>
+          </tr>
+          <tr>
+             <td><code>preload</code></td>
+             <td>String</td>
+             <td>&#39;metadata&#39;</td>
+             <td>---</td>
+          </tr>
+          <tr>
+             <td><code>src</code></td>
+             <td>String</td>
+             <td><em>empty string</em></td>
+             <td>---</td>
+          </tr>
+          <tr>
+             <td><code>style</code></td>
+             <td>Object</td>
+             <td>---</td>
+             <td>---</td>
+          </tr>
+       </tbody>
+    </table>
+    <h3 id="props---events">Props - Events</h3>
+    <table>
+       <thead>
+          <tr>
+             <th>Prop</th>
+             <th>Type</th>
+             <th>Description</th>
+          </tr>
+       </thead>
+       <tbody>
+          <tr>
+             <td><code>listenInterval</code></td>
+             <td>Number</td>
+             <td>Indicates how often to call the <code>onListened</code> prop during playback, in milliseconds. Default is 10000.</td>
+          </tr>
+          <tr>
+             <td><code>onAbort</code></td>
+             <td>Function</td>
+             <td>called when unloading the audio player, like when switching to a different src file. Passed the event.</td>
+          </tr>
+          <tr>
+             <td><code>onCanPlay</code></td>
+             <td>Function</td>
+             <td>called when enough of the file has been downloaded to be able to start playing.  Passed the event.</td>
+          </tr>
+          <tr>
+             <td><code>onCanPlayThrough</code></td>
+             <td>Function</td>
+             <td>called when enough of the file has been downloaded to play through the entire file.  Passed the event.</td>
+          </tr>
+          <tr>
+             <td><code>onEnded</code></td>
+             <td>Function</td>
+             <td>called when playback has finished to the end of the file. Passed the event.</td>
+          </tr>
+          <tr>
+             <td><code>onError</code></td>
+             <td>Function</td>
+             <td>called when the audio tag encounters an error. Passed the event.</td>
+          </tr>
+          <tr>
+             <td><code>onListen</code></td>
+             <td>Function</td>
+             <td>called every <code>listenInterval</code> milliseconds during playback.  Passed the event.</td>
+          </tr>
+          <tr>
+             <td><code>onPause</code></td>
+             <td>Function</td>
+             <td>called when the user pauses playback. Passed the event.</td>
+          </tr>
+          <tr>
+             <td><code>onPlay</code></td>
+             <td>Function</td>
+             <td>called when the user taps play.  Passed the event.</td>
+          </tr>
+          <tr>
+             <td><code>onSeeked</code></td>
+             <td>Function</td>
+             <td>called when the user drags the time indicator to a new time. Passed the event.</td>
+          </tr>
+          <tr>
+             <td><code>onVolumeChanged</code></td>
+             <td>Function</td>
+             <td>called when the user changes the volume, such as by dragging the volume slider</td>
+          </tr>
+          <tr>
+             <td><code>onLoadedMetadata</code></td>
+             <td>Function</td>
+             <td>called when the metadata for the given audio file has finished downloading.  Passed the event.</td>
+          </tr>
+       </tbody>
+    </table>
+    <h2 id="advanced-usage">Advanced Usage</h2>
+    <h3 id="access-to-the-audio-element">Access to the audio element</h3>
+    <p>You can get direct access to the underlying audio element.  First get a ref to ReactAudioPlayer:</p>
+    <pre><code>&lt;ReactAudioPlayer
+      ref={(element) =&gt; { this.rap = element; }}
+    /&gt;
     </code></pre>
-    <p>All parameters are optional except the configured Cloudinary API object:</p>
-    <div class="box-x">
-        <table>
-            <thead>
-                <tr>
-                    <th>Parameter</th>
-                    <th>Description</th>
-                    <th>Type</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><code>options.cloudinary</code></td>
-                    <td>A Cloudinary API object <br>The API must be configured by the user</td>
-                    <td><code>object</code> <br><strong>required</strong></td>
-                </tr>
-                <tr>
-                    <td><code>options.params</code></td>
-                    <td>An object or a function that resolves to an object which can contain any/all properties described in the <a href="https://cloudinary.com/documentation/image_upload_api_reference#upload_method">Cloudinary upload API docs</a>. Read below for more information</td>
-                    <td><code>object</code> or <code>function</code></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <p>Each property in the params object (either directly or resolved from the function)
-    can either be a static value or an async function that resolves to the required value.
-    All upload parameters specified in the <a href="https://cloudinary.com/documentation/image_upload_api_reference#upload_method">Cloudinary docs</a> are supported.
-    </p>
-    <p><em>Note: <code>public_id</code> is different in that it must always be a functional parameter</em></p>
-    <p>Functional parameters are called on every request and can be used in the following way:</p>
-    <pre class="box-x"><code class="language-javascript">const cloudinary = require(&#39;cloudinary&#39;).v2;
-const { CloudinaryStorage } = require(&#39;multer-storage-cloudinary&#39;);
-
-const storage = new CloudinaryStorage({
-    cloudinary: cloudinary,
-    params: {
-        folder: (req, file) =&gt; &#39;folder_name&#39;,
-        format: async (req, file) =&gt; {
-        // async code using `req` and `file`
-        // ...
-        return &#39;jpeg&#39;;
-        },
-        public_id: (req, file) =&gt; &#39;some_unique_id&#39;,
-    },
-});
+    <p>Then you can access the audio element like this:</p>
+    <pre><code>this.rap.audioEl
     </code></pre>
-    <p>You can also provide all params using a single function</p>
-    <pre class="box-x"><code class="language-javascript">const cloudinary = require(&#39;cloudinary&#39;).v2;
-const { CloudinaryStorage } = require(&#39;multer-storage-cloudinary&#39;);
-
-const storage = new CloudinaryStorage({
-    cloudinary: cloudinary,
-    params: async (req, file) =&gt; {
-        // async code using `req` and `file`
-        // ...
-        return {
-        folder: &#39;folder_name&#39;,
-        format: &#39;jpeg&#39;,
-        public_id: &#39;some_unique_id&#39;,
-        };
-    },
-});
-    </code></pre>
-    <h3 id="typescript">Typescript</h3>
-    <p>This library is written is typescript and so provides all types necessary for use
-    in a typescript project.
-    </p>
-    <h2 id="testing">Testing</h2>
-    <p>The Cloudinary API must be configured using the <code>CLOUDINARY_URL</code> environment variable in order to run the tests.
-    All test files are stored in a seperate Cloudinary folder, which is deleted after tests finish.
-    </p>
-    <pre class="box-x"><code class="language-sh">npm test
-    </code></pre>
+    <p>This is especially useful if you need access to read-only attributes of the audio tag such as <code>buffered</code> and <code>played</code>.  See the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio">audio tag documentation</a> for more on these attributes.</p>
 </body>
 </html>
